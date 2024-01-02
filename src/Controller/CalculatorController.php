@@ -6,20 +6,16 @@ use App\Model\Calculator;
 
 class CalculatorController
 {
-    /**
-     * @var Calculator
-     */
-    private $calculator;
+    private Calculator $calculator;
 
     public function __construct()
     {
         $this->calculator = new Calculator();
     }
 
-    public function processRequest($a, $b)
+    public function processRequest($a, $b) : int
     {
-        $result = $this->calculator->add($a, $b);
-        return $result;
+        return $this->calculator->add($a, $b);
     }
 
 }
