@@ -15,7 +15,7 @@ class CalculatorController
 
     public function processRequest($a, $b) : int
     {
-        return $this->calculator->add($a, $b);
+        return json_encode($this->calculator->add($a, $b));
     }
 
 }
