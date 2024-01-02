@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  salaries:
+    driver: bridge
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: php
+    hostname: salaries.mtworoz.com
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - salaries
