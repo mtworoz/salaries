@@ -17,7 +17,7 @@ if($parts[1] != "api") {
     exit();
 }
 
-if($parts[2] != "calculator") {
+if($parts[2] != "calculator" || isset($parts[3])) {
     http_response_code(404);
     exit();
 }
@@ -26,7 +26,11 @@ elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$calculatorController = new CalculatorController();
+$data = file_get_contents('php://input');
+parse_str($data, $resultArray);
 
-echo $calculatorController->processRequest($parts[3], $parts[4]);
+var_dump($resultArray);
 
+//$calculatorController = new CalculatorController();
+//echo $calculatorController->processRequest($parts[3], $parts[4]);
+//
