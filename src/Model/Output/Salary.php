@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Output;
 
 use App\Model\ZUS;
 use App\Model\Tax;

@@ -2,9 +2,9 @@
 
 namespace App\Interfaces;
 
-use App\Model\Salary;
+use App\Model\Output\Salary;
 
 interface SalaryCalculatorInterface
 {
-    public function calculateOutputResults() : Salary;
+    public function calculateOutputResults();
 }
