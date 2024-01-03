@@ -1,5 +1,9 @@
 FROM php:8.3-apache
 
+RUN apt-get update \
+    && apt-get install -y zip unzip \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN a2enmod rewrite
 
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
