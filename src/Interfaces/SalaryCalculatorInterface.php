@@ -6,5 +6,5 @@ use App\Model\Output\Salary;
 
 interface SalaryCalculatorInterface
 {
-    public function calculateOutputResults();
+    public function calculateOutputResults(float $brutto);
 }
