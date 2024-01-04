@@ -9,9 +9,9 @@ class Calculator implements SalaryCalculatorInterface
 {
     public Salary $salary;
 
-    public function calculateOutputResults(float $brutto) : string
+    public function calculateOutputResults(float $gross) : string
     {
-        $this->salary = new Salary($brutto);
+        $this->salary = new Salary($gross);
         return $this->flattenSalaryResponse($this->salary);
     }
 

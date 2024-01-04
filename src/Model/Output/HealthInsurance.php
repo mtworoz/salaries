@@ -7,9 +7,9 @@ class HealthInsurance
     public float $healthInsurance;
     private float $assessmentBasis;
 
-    public function __construct(float $brutto, float $zus)
+    public function __construct(float $gross, float $zus)
     {
-        $this->assessmentBasis = $brutto - $zus;
+        $this->assessmentBasis = $gross - $zus;
         $this->healthInsurance = $this->calculateHealthInsurance($this->assessmentBasis);
     }
 

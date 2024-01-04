@@ -10,11 +10,11 @@ class ZUS
 
     public float $sicknessContribution;
 
-    public function __construct(float $brutto)
+    public function __construct(float $gross)
     {
-        $this->setRetirement($brutto);
-        $this->setDisabilityPension($brutto);
-        $this->setSicknessContribution($brutto);
+        $this->setRetirement($gross);
+        $this->setDisabilityPension($gross);
+        $this->setSicknessContribution($gross);
     }
 
     /**
@@ -47,24 +47,24 @@ class ZUS
     }
 
     /**
-     * @param float $brutto
+     * @param float $gross
      */
-    public function setRetirement(float $brutto) : void
+    public function setRetirement(float $gross) : void
     {
-        $this->retirement = round($brutto * 0.0976,2);
+        $this->retirement = round($gross * 0.0976,2);
     }
 
     /**
-     * @param float $brutto
+     * @param float $gross
      */
-    public function setDisabilityPension(float $brutto) : void
+    public function setDisabilityPension(float $gross) : void
     {
-        $this->disabilityPension = round($brutto * 0.015,2);
+        $this->disabilityPension = round($gross * 0.015,2);
     }
 
-    public function setSicknessContribution(float $brutto) : void
+    public function setSicknessContribution(float $gross) : void
     {
-        $this->sicknessContribution = round($brutto * 0.0245,2);
+        $this->sicknessContribution = round($gross * 0.0245,2);
     }
 
 }

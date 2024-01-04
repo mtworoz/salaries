@@ -8,35 +8,35 @@ use App\Model\Output\Tax;
 
 class Salary
 {
-    public float $brutto;
+    public float $gross;
     public ZUS $zus;
     public HealthInsurance $healthInsurance;
     public Tax $tax;
-    public float $netto;
+    public float $net;
 
-    public function __construct(float $brutto)
+    public function __construct(float $gross)
     {
-        $this->brutto = $brutto;
+        $this->gross = $gross;
         $this->setZus();
         $this->setHealthInsurance();
         $this->setTax();
-        $this->setNetto();
+        $this->setNet();
     }
 
     /**
      * @return float
      */
-    public function getBrutto(): float
+    public function getGross(): float
     {
-        return $this->brutto;
+        return $this->gross;
     }
 
     /**
-     * @param float $brutto
+     * @param float $gross
      */
-    public function setBrutto(float $brutto): void
+    public function setGross(float $gross): void
     {
-        $this->brutto = $brutto;
+        $this->gross = $gross;
     }
 
     /**
@@ -49,7 +49,7 @@ class Salary
 
     public function setZus(): void
     {
-        $this->zus = new ZUS($this->brutto);
+        $this->zus = new ZUS($this->gross);
     }
 
     /**
@@ -62,7 +62,7 @@ class Salary
 
     public function setHealthInsurance(): void
     {
-        $this->healthInsurance = new HealthInsurance($this->brutto, $this->zus->getTotal());
+        $this->healthInsurance = new HealthInsurance($this->gross, $this->zus->getTotal());
     }
 
     /**
@@ -81,15 +81,15 @@ class Salary
     /**
      * @return float
      */
-    public function getNetto(): float
+    public function getNet(): float
     {
-        return $this->netto;
+        return $this->net;
     }
 
-    public function setNetto(): void
+    public function setNet(): void
     {
-        $this->netto = round(
-            $this->brutto -
+        $this->net = round(
+            $this->gross -
             $this->zus->getTotal() -
             $this->healthInsurance->getHealthInsurance() -
             $this->tax->getTax(),

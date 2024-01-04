@@ -22,7 +22,7 @@ class CalculatorController
 
         $this->checkParameters($resultArray);
 
-        return $this->calculator->calculateOutputResults($resultArray['brutto']);
+        return $this->calculator->calculateOutputResults($resultArray['gross']);
     }
 
     public function checkRoute(string $request) : bool
@@ -44,16 +44,16 @@ class CalculatorController
 
     public function checkParameters(array $resultArray) : bool
     {
-        if (!isset($resultArray['brutto']) || !is_numeric($resultArray['brutto']) || $resultArray['brutto'] < 0) {
+        if (!isset($resultArray['gross']) || !is_numeric($resultArray['gross']) || $resultArray['gross'] < 0) {
             http_response_code(400);
 
             $error = '';
 
-            if (!isset($resultArray['brutto'])) {
-                $error = 'Missing required "brutto" parameter';
-            } elseif (!is_numeric($resultArray['brutto'])) {
+            if (!isset($resultArray['gross'])) {
+                $error = 'Missing required "gross" parameter';
+            } elseif (!is_numeric($resultArray['gross'])) {
                 $error = 'The "gross" parameter is not a number';
-            } elseif ($resultArray['brutto'] < 0) {
+            } elseif ($resultArray['gross'] < 0) {
                 $error = 'The "gross" parameter cannot be negative';
             }
 
