@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Interfaces\SalaryCalculatorInterface;
+use App\Interface\SalaryCalculatorInterface;
 use App\Model\Output\Salary;
 
 class Calculator implements SalaryCalculatorInterface
