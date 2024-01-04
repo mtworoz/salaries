@@ -50,11 +50,11 @@ class CalculatorController
             $error = '';
 
             if (!isset($resultArray['brutto'])) {
-                $error = 'Brak wymaganego parametru "brutto"';
+                $error = 'Missing required "brutto" parameter';
             } elseif (!is_numeric($resultArray['brutto'])) {
-                $error = 'Parametr "brutto" nie jest liczbą';
+                $error = 'The "gross" parameter is not a number';
             } elseif ($resultArray['brutto'] < 0) {
-                $error = 'Parametr "brutto" nie może być ujemny';
+                $error = 'The "gross" parameter cannot be negative';
             }
 
             $response = array('error' => $error);
