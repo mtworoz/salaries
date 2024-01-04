@@ -10,27 +10,7 @@ use App\Controller\CalculatorController;
 
 $request = $_SERVER['REQUEST_URI'];
 
-$parts = explode("/", $_SERVER['REQUEST_URI']);
+$calculatorController = new CalculatorController();
 
-if($parts[1] != "api") {
-    http_response_code(404);
-    exit();
-}
+echo $calculatorController->processRequest($request);
 
-if($parts[2] != "calculator" || isset($parts[3])) {
-    http_response_code(404);
-    exit();
-}
-elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);  // Method Not Allowed
-    exit();
-}
-
-$data = file_get_contents('php://input');
-parse_str($data, $resultArray);
-
-var_dump($resultArray);
-
-//$calculatorController = new CalculatorController();
-//echo $calculatorController->processRequest($parts[3], $parts[4]);
-//

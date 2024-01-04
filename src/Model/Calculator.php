@@ -15,11 +15,8 @@ class Calculator implements SalaryCalculatorInterface
         $zus = new ZUS($brutto);
         $healthInsurance = new HealthInsurance($brutto, $zus->getTotal());
         $tax = new Tax($healthInsurance->getAssessmentBasis());
-        return $brutto - $zus->getTotal() - $healthInsurance->getHealthInsurance() - $tax->getTax();
+
+        return round($brutto - $zus->getTotal() - $healthInsurance->getHealthInsurance() - $tax->getTax(), 2);
     }
 
-    public function add($a, $b)
-    {
-        return $a + $b;
-    }
 }
