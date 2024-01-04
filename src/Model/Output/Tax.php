@@ -8,7 +8,7 @@ class Tax
     const TAX_REDUCTION = 300;
 
     private float $taxBase;
-    private float $tax;
+    public float $tax;
 
     public function __construct(float $healthAssessmentBasis)
     {

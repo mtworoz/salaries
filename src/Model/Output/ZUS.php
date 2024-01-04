@@ -4,17 +4,17 @@ namespace App\Model\Output;
 
 class ZUS
 {
-    private float $retirement;
+    public float $retirement;
 
-    private float $disabilityPension;
+    public float $disabilityPension;
 
-    private float $sicknessContribution;
+    public float $sicknessContribution;
 
     public function __construct(float $brutto)
     {
-        $this->retirement = $this->calculateRetirement($brutto);
-        $this->disabilityPension = $this->calculateDisabilityPension($brutto);
-        $this->sicknessContribution = $this->calculateSicknessContribution($brutto);
+        $this->setRetirement($brutto);
+        $this->setDisabilityPension($brutto);
+        $this->setSicknessContribution($brutto);
     }
 
     /**
@@ -46,19 +46,25 @@ class ZUS
         return $this->retirement + $this->disabilityPension + $this->sicknessContribution;
     }
 
-    public function calculateRetirement(float $brutto): float
+    /**
+     * @param float $brutto
+     */
+    public function setRetirement(float $brutto) : void
     {
-        return round($brutto * 0.0976,2);
+        $this->retirement = round($brutto * 0.0976,2);
     }
 
-    public function calculateDisabilityPension(float $brutto): float
+    /**
+     * @param float $brutto
+     */
+    public function setDisabilityPension(float $brutto) : void
     {
-        return round($brutto * 0.015,2);
+        $this->disabilityPension = round($brutto * 0.015,2);
     }
 
-    public function calculateSicknessContribution(float $brutto): float
+    public function setSicknessContribution(float $brutto) : void
     {
-        return round($brutto * 0.0245,2);
+        $this->sicknessContribution = round($brutto * 0.0245,2);
     }
 
 }

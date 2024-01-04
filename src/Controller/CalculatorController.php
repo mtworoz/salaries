@@ -13,7 +13,7 @@ class CalculatorController
         $this->calculator = new Calculator();
     }
 
-    public function processRequest(string $request) : float
+    public function processRequest(string $request) : string
     {
         $this->checkRoute($request);
 
@@ -22,7 +22,7 @@ class CalculatorController
 
         $this->checkParameters($resultArray);
 
-        return json_encode($this->calculator->calculateOutputResults($resultArray['brutto']));
+        return $this->calculator->calculateOutputResults($resultArray['brutto']);
     }
 
     public function checkRoute(string $request) : bool

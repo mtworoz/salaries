@@ -4,7 +4,7 @@ namespace App\Model\Output;
 
 class HealthInsurance
 {
-    private float $healthInsurance;
+    public float $healthInsurance;
     private float $assessmentBasis;
 
     public function __construct(float $brutto, float $zus)
