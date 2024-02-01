@@ -1,30 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Application\Service;
 
-use App\Model\Calculator;
-
-class CalculatorController
+class CalculatorRouteService
 {
-    private Calculator $calculator;
-
-    public function __construct()
-    {
-        $this->calculator = new Calculator();
-    }
-
-    public function processRequest(string $request) : string
-    {
-        $this->checkRoute($request);
-
-        $data = file_get_contents('php://input');
-        parse_str($data, $resultArray);
-
-        $this->checkParameters($resultArray);
-
-        return $this->calculator->calculateOutputResults($resultArray['gross']);
-    }
-
     public function checkRoute(string $request) : bool
     {
         $parts = explode("/", $request);
@@ -64,5 +43,5 @@ class CalculatorController
             return true;
         }
     }
-
 }
+
