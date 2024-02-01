@@ -6,7 +6,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 header("Content-Type: application/json; charset=UTF-8");
 
-use App\Controller\CalculatorController;
+use App\UI\Controller\CalculatorController;
 
 $request = $_SERVER['REQUEST_URI'];
 

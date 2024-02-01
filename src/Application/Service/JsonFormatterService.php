@@ -1,20 +1,11 @@
 <?php
 
-namespace App\Model;
+namespace App\Application\Service;
 
-use App\Interface\SalaryCalculatorInterface;
-use App\Model\Output\Salary;
+use App\Domain\Model\Output\Salary;
 
-class Calculator implements SalaryCalculatorInterface
+class JsonFormatterService
 {
-    public Salary $salary;
-
-    public function calculateOutputResults(float $gross) : string
-    {
-        $this->salary = new Salary($gross);
-        return $this->flattenSalaryResponse($this->salary);
-    }
-
     public function flattenSalaryResponse(Salary $salary) : string
     {
         $salaryArray = json_decode(json_encode($salary), true);
@@ -30,5 +21,4 @@ class Calculator implements SalaryCalculatorInterface
 
         return json_encode($flattenedArray, JSON_PRETTY_PRINT);
     }
-
 }
